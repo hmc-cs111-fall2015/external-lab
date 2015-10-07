@@ -1,4 +1,4 @@
-name := "Calculator Lab"
+name := "Calculator Lab -- sample solution"
 
 version := "1.0"
 
