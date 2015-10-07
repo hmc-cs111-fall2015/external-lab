@@ -10,7 +10,7 @@ object Calculator extends EvalLoop with App {
   loop { line ⇒
     CalcParser(line) match {
       case CalcParser.Success(t, _) ⇒ println(eval(t))
-      case e: CalcParser.NoSuccess  ⇒ println(e)
+      case e: CalcParser.NoSuccess ⇒ println(e)
     }
   }
 }
