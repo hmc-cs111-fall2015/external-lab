@@ -15,11 +15,9 @@ object sugar {
   // ExprBuilder saves the left operand and defines methods that 
   //   take the right operand and returns the appropriate Expr 
   implicit class ExprBuilder(val left: Expr) {
-    def |+|(right: Term) = Plus(left, right)
-    def |-|(right: Term) = Minus(left, right)
-  }
-  implicit class TermBuilder(val left: Term) {
-    def |*|(right: Factor) = Times(left, right)
-    def |/|(right: Factor) = Quotient(left, right)
+    def |+|(right: Expr) = Plus(left, right)
+    def |-|(right: Expr) = Minus(left, right)
+    def |*|(right: Expr) = Times(left, right)
+    def |/|(right: Expr) = Quotient(left, right)
   }
 }

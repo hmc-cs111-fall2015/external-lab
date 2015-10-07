@@ -38,7 +38,30 @@ object CalcInterpreterSpec extends Properties("Interpreter") {
     } 
     
     property("addition") = forAll { (n1: Int, n2: Int) ⇒
-      (n1 |+| n2) ~> (n1 + n2)   
+      (n1 |+| n2) ~> (n1 + n2) 
+    } 
+    property("subtraction") = forAll { (n1: Int, n2: Int) ⇒
+      (n1 |-| n2) ~> (n1 - n2) 
+    } 
+    property("multplication") = forAll { (n1: Int, n2: Int) ⇒
+      (n1 |*| n2) ~> (n1 * n2)
+    } 
+    // Disabled because divide by 0 errors
+    //property("division") = forAll { (n1: Int, n2: Int) ⇒
+    //  (n1 |/| n2) ~> (n1 / n2)
+    //} 
+
+    property("minus associativity") = forAll { (n1: Int, n2: Int, n3: Int) ⇒
+      ((n1 |-| n2) |-| n3)  ~> (n1 - n2 - n3)
+    } 
+
+    // Disabled because divide by 0 errors
+    //property("quotient associativity") = forAll { (n1: Int, n2: Int, n3: Int) ⇒
+    //  ((n1 |/| n2) |/| n3)  ~> (n1 / n2 / n3)
+    //} 
+
+    property("precedence") = forAll { (n1: Int, n2: Int, n3: Int, n4: Int) ⇒
+      (n1 |+| (n2 |*| n3) |+| n4) ~> (n1 + n2*n3 + n4)
     } 
     
 }
