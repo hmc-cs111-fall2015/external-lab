@@ -16,5 +16,8 @@ object sugar {
   //   take the right operand and returns the appropriate Expr 
   implicit class ExprBuilder(val left: Expr) {
     def |+|(right: Expr) = Plus(left, right)
+    def |-|(right: Expr) = Minus(left, right)
+    def |*|(right: Expr) = Times(left, right)
+    def |/|(right: Expr) = Quotient(left, right)
   }
 }
