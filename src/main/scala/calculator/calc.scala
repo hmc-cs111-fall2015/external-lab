@@ -5,7 +5,7 @@ import calculator.parser.CalcParser
 import calculator.semantics.eval
 
 object Calculator extends EvalLoop with App {
-  override def prompt = "> "
+  override def prompt = "Expr> "
 
   loop { line ⇒
     CalcParser(line) match {
