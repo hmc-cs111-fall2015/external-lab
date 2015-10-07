@@ -25,4 +25,8 @@ object CalcParseSpec extends Properties("Parser") {
       s"$n1 + $n2" ~> (n1 |+| n2)   
     } 
     
+    property("subtraction") = forAll { (n1: Int, n2: Int) ⇒
+      s"$n1 - $n2" ~> (n1 |-| n2)   
+    } 
+    
 }

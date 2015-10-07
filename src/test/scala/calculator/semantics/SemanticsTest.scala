@@ -41,4 +41,8 @@ object CalcInterpreterSpec extends Properties("Interpreter") {
       (n1 |+| n2) ~> (n1 + n2)   
     } 
     
+    property("subtraction") = forAll { (n1: Int, n2: Int) ⇒
+      (n1 |-| n2) ~> (n1 - n2)   
+    } 
+    
 }
