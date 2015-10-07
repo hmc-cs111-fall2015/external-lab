@@ -15,6 +15,13 @@ package calculator.ir
 
 sealed abstract class AST
 sealed abstract class Expr extends AST
+sealed abstract class Factor extends Expr
+sealed abstract class Term extends Expr
 
-case class Num(n: Int) extends Expr
-case class Plus(left: Expr, right: Expr) extends Expr
+case class Plus(left: Expr, right: Term) extends Expr
+case class Minus(left: Expr, right: Term) extends Expr
+case class Times(left: Term, right: Factor) extends Term
+case class Quotient(left: Term, right: Factor) extends Term
+
+case class Num(n: Int) extends Factor
+case class Parenthetical(inner: Expr) extends Factor
