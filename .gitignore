@@ -1,0 +1,6 @@
+project/project
+project/target
+target
+.settings
+/bin/
+.cache-tests
