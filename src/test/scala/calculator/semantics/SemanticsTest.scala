@@ -33,6 +33,21 @@ object CalcInterpreterSpec extends Properties("Interpreter") {
       n2 ← genNum
     } yield n1 |+| n2
     
+    val genSubtraction = for {
+      n1 <- genNum
+      n2 <- genNum
+    } yield n1 |-| n2
+    
+    val genMultiplication = for {
+      n1 <- genNum
+      n2 <- genNum
+    } yield n1 |*| n2
+    
+    val genDivision = for {
+      n1 <- genNum
+      n2 <- genNum
+    } yield n1 |/| n2
+    
     property("numbers") = forAll { (n: Int) ⇒
       Num(n) ~> n
     } 
@@ -40,5 +55,17 @@ object CalcInterpreterSpec extends Properties("Interpreter") {
     property("addition") = forAll { (n1: Int, n2: Int) ⇒
       (n1 |+| n2) ~> (n1 + n2)   
     } 
+    
+    property("subtraction") = forAll { (n1: Int, n2: Int) =>
+      (n1 |-| n2) ~> (n1 - n2)
+    }
+    
+    property("multiplication") = forAll { (n1: Int, n2: Int) ⇒
+      (n1 |*| n2) ~> (n1 * n2)   
+    } 
+    
+    property("division") = forAll { (n1: Int, n2: Int) =>
+      (n1 |/| n2) ~> (n1 / n2)
+    }
     
 }
