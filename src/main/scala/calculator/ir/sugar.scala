@@ -17,5 +17,6 @@ object sugar {
   implicit class ExprBuilder(val left: Expr) {
     def |+|(right: Expr) = Plus(left, right)
     def |-|(right: Expr) = Minus(left,right)
+    def |*|(right: Expr) = Times(left,right)
   }
 }
